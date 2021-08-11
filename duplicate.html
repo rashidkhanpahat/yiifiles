@@ -1,0 +1,69 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<form>
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text1" /></div>  
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text2" /></div>
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text3" /></div>
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text4" /></div>
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text5" /></div>
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text6" /></div>
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text7" /></div>
+  <div><input type="text" class="class_name txt-input" onkeyup="getDuplicatesinputs();" id="text8" /></div>
+  
+  <input type="button" value="Go" onclick="getDuplicatesinputs();" />
+</form>
+<p>
+</p>
+<div class="gbt-custom-notification-notice error gbt-cn-dynamic  open-notice" style="animation-delay: 0.5s"><i class="gbt-custom-notification-notice-icon spk-icon-spk_error"></i><div class="gbt-custom-notification-message" style="animation-delay:1.25s">
+<div>
+			<li>
+			Some products are not deliverable at <strong>110079</strong> location. You can remove undeliverable products from <a href="https://dev.livvsafe.com/cart/">cart page</a>		</li>
+			<li>
+			Some products are not deliverable at <strong>110079</strong> location. You can remove undeliverable products from <a href="https://dev.livvsafe.com/cart/">cart page</a>		</li>
+			<li>
+			Some products are not deliverable at <strong>110079</strong> location. You can remove undeliverable products from <a href="https://dev.livvsafe.com/cart/">cart page</a>		</li>
+	</div></div></div>
+<script>
+function checkDuplicatesinputs() {
+  // get all input elements
+  var $elems = $('.class_name');
+
+  // we store the inputs value inside this array
+  var values = [];
+  // return this
+  var isDuplicated = false;
+  // loop through elements
+  $elems.each(function () {
+    //If value is empty then move to the next iteration.
+    if(!this.value) return true;
+    //If the stored array has this value, break from the each method
+    if(values.indexOf(this.value) !== -1) {
+       isDuplicated = true;
+	   //alert(values.indexOf(this.value);
+       return false;
+     }
+    // store the value
+    values.push(this.value);
+	
+  });   
+ 
+return isDuplicated;     
+}
+
+
+function getDuplicatesinputs()
+{
+//$('input[type=submit]').on('click', function(e) {
+//e.preventDefault();
+console.log(checkDuplicatesinputs());
+if(checkDuplicatesinputs())
+ $('p').html('Has duplication');
+ else  $('p').html('No duplication');
+//});
+}
+
+$('.gbt-custom-notification-notice.error.gbt-cn-dynamic.open-notice div div li:not(:first-child)').remove();
+//$('.gbt-custom-notification-message div li:not(:first-child):not(:last-child)').remove();
+//$(yourul).find('li:not(:first-child):not(:last-child)').remove();
+
+</script>
